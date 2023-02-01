@@ -2,27 +2,62 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2363c5d4-2c58-45c2-b1d3-910504cf3d15" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20210120085216.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20210120094150.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/eleve/eleves_disponibles.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/eleve/profil_eleve.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20210122121326.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/AffectationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/ClasseController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/CoursController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/LogistiqueController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/OptionController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/ProfController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/CategorieMat.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/EtablirBesoin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Fournisseur.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/LocalAffeter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Logisticien.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Materiel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/RetraitMat.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/AffectationType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/AnneescolaireType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/ClasseType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/CoursType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/OptionType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/ProfType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/CategorieMatRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/EtablirBesoinRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/FournisseurRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/LocalAffeterRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/LogisticienRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/MaterielRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/RetraitMatRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/affectation/affectation.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/affectation/liste_cours.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/affectation/prof_cours.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/anneescolaire/anneescolaire.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/classe/classe.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/classe/classe_cours.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/classe/detail.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/classe/liste_classe.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/cours/cours.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/cours/liste.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/logistique/categorie.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/logistique/detailEtat.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/logistique/etatBesion.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/logistique/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/logistique/inventaire.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/logistique/lg.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/logistique/listeMat.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/logistique/listeMouv.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/logistique/login.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/logistique/materiel.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/logistique/showEtat.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/option/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/option/option.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/prof/detail.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/prof/liste.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/prof/prof.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AnneeScolaireController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AnneeScolaireController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EleveController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EleveController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/InscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InscriptionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PaiementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PaiementController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Eleve.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Eleve.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Inscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Inscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PaiementRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PaiementRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/extension/sidebar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/extension/sidebar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/inscription/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/inscription/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/inscription/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/inscription/login.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/paiement/eleves_en_ordre.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/paiement/eleves_en_ordre.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/paiement/historique_paiement.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/paiement/historique_paiement.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/paiement/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/paiement/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/tuteur/nouveau.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tuteur/nouveau.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,16 +190,16 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/tuteur" />
+    <property name="last_opened_file_path" value="$USER_HOME$/finance" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Bigga\schoolapp\templates\tuteur" />
-      <recent name="C:\Users\Bigga\schoolapp\templates\paiement" />
-      <recent name="C:\Users\Bigga\schoolapp\templates\eleve" />
-      <recent name="C:\Users\Bigga\schoolapp\templates\frais" />
-      <recent name="C:\Users\Bigga\schoolapp\templates\inscription" />
+      <recent name="C:\Users\Bigga\schoolapp\src\Form" />
+      <recent name="C:\Users\Bigga\schoolapp\templates" />
+      <recent name="C:\Users\Bigga\schoolapp\src\Controller" />
+      <recent name="C:\Users\Bigga\schoolapp\src\Repository" />
+      <recent name="C:\Users\Bigga\schoolapp\src\Entity" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -211,7 +246,9 @@
       <workItem from="1611171955285" duration="5543000" />
       <workItem from="1611251752972" duration="9886000" />
       <workItem from="1611302967591" duration="5689000" />
-      <workItem from="1611310282415" duration="3447000" />
+      <workItem from="1611310282415" duration="5098000" />
+      <workItem from="1611340619538" duration="1861000" />
+      <workItem from="1611494142346" duration="1207000" />
     </task>
     <servers />
   </component>
@@ -226,9 +263,10 @@
       <screen x="0" y="0" width="819" height="574" />
     </state>
     <state x="141" y="42" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.819.574@0.0.819.574" timestamp="1611065176961" />
-    <state x="191" y="42" key="FileChooserDialogImpl" timestamp="1610967225073">
-      <screen x="0" y="0" width="819" height="574" />
+    <state x="319" y="53" key="FileChooserDialogImpl" timestamp="1611495375087">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="319" y="53" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1611495375087" />
     <state x="191" y="42" key="FileChooserDialogImpl/0.0.819.574@0.0.819.574" timestamp="1610967225073" />
     <state width="831" height="566" key="SwitcherDM" timestamp="1611312558791">
       <screen x="0" y="0" width="1366" height="728" />

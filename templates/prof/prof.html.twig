@@ -1,0 +1,40 @@
+
+{% include 'extension/sidebar.html.twig' %}
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Professeur</h6>
+
+                </div>
+            </div>
+            <!-- Card stats -->
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="container-fluid mt--6">
+        <div class="row">
+            <div class="col">
+                <div class="card border-0">
+                    <div id="map-default" class="map-canvas" data-lat="40.748817" data-lng="-73.985428" style="height: 600px;">
+                        <h1 class="heading-small text-muted mb-4"><center>Informations Sur Le Professeur</center></h1>
+                        <div class="pl-lg-4">
+                            {{form_start (formProfesseur)}}
+                            {{ form_row (formProfesseur.nom_complet, {attr:{'class':'form-control'}}) }}
+                            {{ form_row (formProfesseur.telephone, {attr:{'class':'form-control'}}) }}
+                            {{ form_row (formProfesseur.date_naissance, {attr:{'class':'form-control'}}) }}
+                            {{ form_row (formProfesseur.lieu_naissance, {attr:{'class':'form-control'}}) }}
+                            {{ form_row (formProfesseur.adresse, {attr:{'class':'form-control'}}) }}
+                            <button type="submit" class="btn btn-success">Enregistrer</button>
+                            {{ form_end (formProfesseur) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "extension/footer.html.twig" %}

@@ -1,0 +1,68 @@
+{% include "extension/sidebar.html.twig" %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <h1>Liste Des Professeurs et Leurs Cours</h1>
+                </div>
+
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title"> </h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        <!--<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>-->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-borderless table-striped table-hover">
+                        <thead class="bg-primary">
+                        <tr>
+
+                            <th>Noms complets</th>
+                            <th>Cours</th>
+
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for findBYprofesseur in findBYprofesseur %}
+                            <tr>
+
+                                <td> {{ findBYprofesseur.noms | raw }}</td>
+
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+    <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+</div>
+
+
+<!-- /.content-wrapper -->
+<script src="{{ asset('my_js/get_deces.js') }}"></script>
+
+
+{% include "/extension/footer.html.twig" %}
+

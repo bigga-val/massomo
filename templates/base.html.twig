@@ -38,6 +38,66 @@
             </script>
             <script type="text/javascript" src="{{ asset('jsforpdf/jspdf.js') }}"></script>
             <script type="text/javascript" src="{{ asset('jsforpdf/pdfFromHTML.js') }}"></script>
+            <script src="{{ asset("assets/js/argon.js") }}"></script>
+            <script src="{{ asset("assets/datatables/jquery.dataTables.min.js")  }}"></script>
+            <script src="{{ asset("assets/datatables-bs4/js/dataTables.bootstrap4.min.js")  }}"></script>
+            <script src="{{ asset("assets/datatables-responsive/js/dataTables.responsive.min.js")  }}"></script>
+            <script src="{{ asset("assets/datatables-responsive/js/responsive.bootstrap4.min.js")  }}"></script>
+            <script>
+                $(function () {
+                    $("#example1").DataTable({
+                        "responsive": true,
+                        "autoWidth": false,
+                    });
+                    $("#example3").DataTable({
+                        "responsive": true,
+                        "autoWidth": false,
+                        language: {
+                            url: "http://cdn.datatables.net/plug-ins/1.10.9/i18n/French.json"
+                        }
+                    });
+                    $("#example4").DataTable({
+                        "responsive": true,
+                        "autoWidth": false,
+                        language: {
+                            url: "http://cdn.datatables.net/plug-ins/1.10.9/i18n/French.json"
+                        }
+                    });
+                    $("#example5").DataTable({
+                        "responsive": true,
+                        "autoWidth": false,
+                        language: {
+                            url: "http://cdn.datatables.net/plug-ins/1.10.9/i18n/French.json"
+                        }
+                    });
+                    $("#example6").DataTable({
+                        "responsive": true,
+                        "autoWidth": false,
+                        language: {
+                            url: "http://cdn.datatables.net/plug-ins/1.10.9/i18n/French.json"
+                        }
+                    });
+                    $("#example7").DataTable({
+                        "responsive": true,
+                        "autoWidth": false,
+                        language: {
+                            url: "http://cdn.datatables.net/plug-ins/1.10.9/i18n/French.json"
+                        }
+                    });
+                    $('#example2').DataTable({
+                        "paging": true,
+                        "lengthChange": true,
+                        "searching": true,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                        "responsive": true,
+                        language: {
+                            url: "http://cdn.datatables.net/plug-ins/1.10.9/i18n/French.json"
+                        }
+                    });
+                });
+            </script>
         {% endblock %}
     </body>
 </html>

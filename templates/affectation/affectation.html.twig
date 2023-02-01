@@ -1,0 +1,42 @@
+
+{% include 'extension/sidebar.html.twig' %}
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+
+                </div>
+            </div>
+            <!-- Card stats -->
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="container-fluid mt--6">
+        <div class="row">
+            <div class="col">
+                <div class="card border-0">
+                    <div id="map-default" class="map-canvas" data-lat="40.748817" data-lng="-73.985428" style="height: 600px;">
+                        <h1 class="heading-small text-muted mb-4"><center>Affecter Un Cours</center></h1>
+                        {{form_start (formAffectationCours)}}
+                        <div class="pl-lg-4">
+
+                            {{ form_row (formAffectationCours.professeur, {attr:{'class':'form-control'}})}}
+                            {{ form_row (formAffectationCours.cours, {attr:{'class':'form-control'}}) }}
+                            {{ form_row (formAffectationCours.classe, {attr:{'class':'form-control'}}) }}
+                            {{ form_row (formAffectationCours.charge_horaire, {attr:{'class':'form-control'}})}}
+                            {{ form_row (formAffectationCours.annee_scolaire, {attr:{'class':'form-control'}}) }}
+                            {{ form_row (formAffectationCours.created_at, {attr:{'class':'form-control'}}) }}
+
+                            <button type="submit" class="btn btn-success">Enregistrer</button>
+                            {{ form_end (formAffectationCours) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "extension/footer.html.twig" %}

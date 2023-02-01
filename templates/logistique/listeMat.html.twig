@@ -1,0 +1,68 @@
+ {% include 'extension/sidebar.html.twig' %}
+ 
+ <div class="row">
+        <div class="col">
+          <div class="card bg-default shadow">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="text-white mb-0">Liste des Materieux</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-dark table-flush" id="example1">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" class="sort" data-sort="name">Nom materiel</th>
+                    <th scope="col" class="sort" data-sort="budget">quantité</th>
+                    <th scope="col" class="sort" data-sort="status">date d'entrée</th>
+                    <th scope="col">nom du fournisseur</th>
+                    <th scope="col" class="sort" data-sort="completion">update</th>
+                  </tr>
+                </thead>
+                <tbody class="list">
+                 {% for tab in getAll %}
+                  <tr>
+                    <td scope="row">
+                      <div class="media align-items-center">
+                        <div class="media-body">
+                          <span class="name mb-0 text-sm">{{tab.nomMateriel}}</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="budget">
+                      {{tab.quantite}}
+                    </td>
+                    <td>
+                      <span class="badge badge-dot mr-4">
+                        <i class="bg-warning"></i>
+                        <span class="status">{{tab.dateAchat | date('d/m/Y')}}</span>
+                      </span>
+                    </td>
+                    <td>
+                      <div class="avatar-group">
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                          <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg">
+                        </a>
+                        {# <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
+                          <img alt="Image placeholder" src="../assets/img/theme/team-2.jpg">
+                        </a> #}
+                        <span>{{tab.idFournisseur.nomComplet}}</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="completion mr-2">update</span>
+                        <div>
+                          <div class="progress">
+                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                 {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+ {% include "extension/footer.html.twig" %}

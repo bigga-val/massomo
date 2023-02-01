@@ -1,0 +1,87 @@
+{% include 'extension/sidebar.html.twig' %}
+<!-- Header -->
+<div class="header bg-default pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">LOGISTIQUE</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Nouveau materiel</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <!-- Card stats -->
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header border-0">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h3 class="mb-0">Enregistrement d'un materiel</h3>
+                        </div>
+                        <div class="col text-right">
+                            <a href="/allMateriel" class="btn btn-sm btn-primary">Vous tous</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <h6 class="heading-small text-muted mb-4">Remplir le formulaire</h6>
+                        {{form_start(formMateriel)}}
+                        <div class="pl-lg-6">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        {{form_row(formMateriel.nomMateriel, {'attr':{'class': 'form-control', 'placeholder': 'nom du materiel'}})}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                       {{form_row(formMateriel.quantite, {'attr':{'class': 'form-control', 'placeholder': 'quantité'}})}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                       {{form_row(formMateriel.idFournisseur, {'attr':{'class': 'form-control', 'placeholder': 'nom du fournisseur'}})}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                       {{form_row(formMateriel.idCategorie, {'attr':{'class': 'form-control', 'placeholder': 'Categorie'}})}}
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="row">
+                                <div class="col-lg-6">
+                                    {# <div class="form-group">
+                                       {{form_row(formMateriel.etat, {'attr':{'class': 'form-control', 'placeholder': 'valider'}})}}
+                                    </div> #}
+                                </div>
+                                <div class="col-lg-6">
+                                   <button class="btn btn-outline-primary btn-block">sauver</button>
+                                </div> 
+                            </div>
+                        </div>
+                       {{form_end(formMateriel)}}
+                    </form>
+                </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+    {% include "extension/footer.html.twig" %}
+</div>
