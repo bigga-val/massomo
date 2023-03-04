@@ -21,14 +21,12 @@
             <div class="col">
                 <div class="card border-0">
                     <div id="map-default" class="map-canvas" data-lat="40.748817" data-lng="-73.985428" style="height: 600px;">
-                        <h1 class="heading-small text-muted mb-4"><center>Enregistrer un Cours</center></h1>
-                        <div class="pl-lg-4">
-                        {{form_start (formCours)}}
-                            {{ form_row (formCours.designation, {attr:{'class':'form-control'}}) }}
-                            {{ form_row (formCours.is_active) }}
-                            <button type="submit" class="btn btn-success">Enregistrer</button>
-                        {{ form_end (formCours) }}
+                        <h1 class="heading-small text-muted mb-4"><center> <h1>Create new CoursContent</h1></center></h1>
+                        <div class="col-md-12">
+                                {{ include('cours_content/_form.html.twig') }} <br>
+                                <a href="{{ path('cours_content_index') }} " class="btn btn-outline-warning btn-block" >back to list</a>
                         </div>
+                          
                     </div>
                 </div>
             </div>

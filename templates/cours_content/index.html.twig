@@ -1,0 +1,73 @@
+{% include "extension/sidebar.html.twig" %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <h1><center> Contenu du cours </center></h1>
+                </div>
+
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title"> </h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        <!--<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>-->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-borderless table-striped table-hover">
+                        <thead class="bg-warning">
+                            <tr class="text-white">
+                                <th>Cours</th>
+                                <th>Classe</th>
+                                <th>Prof</th>
+                                <th class="text-center">actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table">
+                              {% for cours_content in cours_contents %}
+                                    <tr>
+                                        <td><strong> {{ cours_content.idCours.designation }} </strong></td>
+                                        <td><strong> {{ cours_content.classe.designation }} </strong></td>
+                                        <td><strong> {{ cours_content.prof.nomComplet }} </strong></td>
+                                        
+                                        
+                                        <td class="text-center">
+                                            <a href="{{ path('cours_content_show', {'id': cours_content.id}) }}" class="btn btn-outline-info">show</a>
+                                            <a href="{{ path('cours_content_edit', {'id': cours_content.id}) }}" class="btn btn-outline-warning">edit</a>
+                                            <a href="{{ path('cours_content_new') }}" class="btn btn-outline-primary">Create new</a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="4">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                        </tbody>
+                    </table>
+                    
+                </div>
+                <!-- /.card-body -->
+            </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+    <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+</div>
+
+
+{% include "/extension/footer.html.twig" %}
+

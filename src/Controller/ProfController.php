@@ -20,12 +20,44 @@ use App\Respository\ClasseRepository;
 use App\Respository\OptionRepository;
 use App\Form\ProfType;
 use symfony\Component\Form\Extension\Core\Type\TextType;
-use symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType; 
 use symfony\Component\Form\Extension\Core\Type\SubmittType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 
 class ProfController extends AbstractController
 {
+
+    /**
+     * @Route("/addProf", name="addProf")
+     */
+    public function NewProf(Request $request, EntityManagerInterface $manager)
+    {
+        $prof = new Professeur();
+        $addProff = $this->createFormBuilder($prof)
+                         ->add('nomComplet')
+                         ->add('telephone')
+                         ->add('adresse', TextareaType::class,[
+                            'attr'=>['class'=>'tinymce']
+                         ])
+                         ->add('lieuNaissance')
+                         ->add('dateNaissance', DateType::class,[
+                            'widget'=>'single_text',
+                            'input'  => 'datetime_immutable'
+                         ])
+                         ->getForm();
+        $addProff->handleRequest($request);
+        if($addProff->isSubmitted() && $addProff->isValid()){
+             $manager->persist($prof);
+             $manager->flush();
+             return $this->redirectToRoute('liste_prof');
+        }
+        return $this->render('prof/prof.html.twig',[
+            'formProfesseur'=>$addProff->createView()
+        ]);
+    }
+
+
     /**
      * @Route("/prof", name="prof")
      */

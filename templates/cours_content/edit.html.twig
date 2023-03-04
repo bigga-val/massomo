@@ -1,4 +1,3 @@
-
 {% include 'extension/sidebar.html.twig' %}
 <!-- Header -->
 <div class="header bg-primary pb-6">
@@ -21,19 +20,13 @@
             <div class="col">
                 <div class="card border-0">
                     <div id="map-default" class="map-canvas" data-lat="40.748817" data-lng="-73.985428" style="height: 600px;">
-                        <h1 class="heading-small text-muted mb-4"><center>Enregistrement D'Une Classe</center></h1>
-                        
-                        <div class="col-md-6">
-                            {{form_start (formClasse)}}
-                            {{ form_row (formClasse.Options, {attr:{'class':'form-control'}}) }}
-                            {{ form_row (formClasse.titulaire, {attr:{'class':'form-control'}}) }}
-                            {{ form_row (formClasse.designation, {attr:{'class':'form-control'}}) }}
-                            {{ form_row (formClasse.is_active, {attr:{'class':'form-control'}}) }}
-                            <button type="submit" class="btn btn-success">Enregistrer</button>
-                            {{ form_end (formClasse) }}
-
+                        <h1 class="heading-small text-muted mb-4"><center> <h1>Modifier le contenu</h1></center></h1>
+                        <div class="col-md-12">
+                               {{ include('cours_content/_form.html.twig', {'button_label': 'Update'}) }}
+                                <a href="{{ path('cours_content_index') }}">back to list</a>
+                              {{ include('cours_content/_delete_form.html.twig') }}
                         </div>
-                        
+                          
                     </div>
                 </div>
             </div>

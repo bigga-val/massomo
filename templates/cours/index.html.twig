@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1><center> Les Classes disponibles </center></h1>
+                    <h1><center> Contenu du cours </center></h1>
                 </div>
 
             </div>
@@ -27,28 +27,35 @@
                 </div>
                 <div class="card-body">
                     <table id="example2" class="table table-bordered table-borderless table-striped table-hover">
-                        <thead class="bg-primary">
-                        <tr>
-
-                            <th>classes</th>
-                            <th>options</th>
-                            <th>titulaire</th>
-
-
-
-                        </tr>
+                        <thead class="bg-warning">
+                            <tr>
+                                <th>Id</th>
+                                <th>Designation</th>
+                                <th>Promotion</th>
+                                <th>Professeur</th>
+                                <th>Is_active</th>
+                                <th>actions</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        {% for allcours in allcours %}
-                            <tr>
-                                <td> {{ allcours.designation}}</td>
-                                <td> {{ allcours.options.designation }}</td>
-                                <td> {{ allcours.titulaire.nomComplet }}</td>
-
-                            </tr>
-                        {% endfor %}
-                        </tbody>
+                            {% for cour in cours  %}
+                                <tr>
+                                    <td>{{ cour.id }}</td>
+                                    <td>{{ cour.designation }}</td>
+                                    <td>{{ cour.promotion.designation }}</td>
+                                    <td>{{ cour.professeur.nomComplet }}</td>
+                                    <td>{{ cour.isActive ? 'Yes' : 'No' }}</td>
+                                    <td> 
+                                        <a href="{{ path('cours_content_new', {'id': cour.id}) }}" class="btn btn-outline-info">add content</a> 
+                                        <a href="{{ path('cours_content_show', {'id': cour.id}) }}" class="btn btn-outline-info">show content</a>
+                                        <a href="{{ path('cours_edit', {'id': cour.id}) }}" class="btn btn-outline-warning">edit</a>     
+                                    </td>
+                                </tr>
+                        
+                            {% endfor %}
+                            </tbody>
                     </table>
+                    
                 </div>
                 <!-- /.card-body -->
             </div><!-- /.container-fluid -->

@@ -24,10 +24,10 @@
                         <h1 class="heading-small text-muted mb-4"><center>Informations Sur Le Professeur</center></h1>
                         <div class="pl-lg-4">
                             {{form_start (formProfesseur)}}
-                            {{ form_row (formProfesseur.nom_complet, {attr:{'class':'form-control'}}) }}
+                            {{ form_row (formProfesseur.nomComplet, {attr:{'class':'form-control'}}) }}
                             {{ form_row (formProfesseur.telephone, {attr:{'class':'form-control'}}) }}
-                            {{ form_row (formProfesseur.date_naissance, {attr:{'class':'form-control'}}) }}
-                            {{ form_row (formProfesseur.lieu_naissance, {attr:{'class':'form-control'}}) }}
+                            {{ form_row (formProfesseur.dateNaissance, {attr:{'class':'form-control'}}) }}
+                            {{ form_row (formProfesseur.lieuNaissance, {attr:{'class':'form-control'}}) }}
                             {{ form_row (formProfesseur.adresse, {attr:{'class':'form-control'}}) }}
                             <button type="submit" class="btn btn-success">Enregistrer</button>
                             {{ form_end (formProfesseur) }}

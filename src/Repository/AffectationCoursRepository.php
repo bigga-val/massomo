@@ -47,4 +47,8 @@ class AffectationCoursRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findBYprofesseur(){
+        // $repo = $this->getDoctrine()->getRepository();
+    }
 }

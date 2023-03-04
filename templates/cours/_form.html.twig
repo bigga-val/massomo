@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+         {{ form_start(form) }}
+            {{ form_row (form.designation, {attr:{'class':'form-control'}}) }}
+            {{ form_row (form.promotion, {attr:{'class':'form-control'}}) }}
+            {{ form_row (form.professeur, {attr:{'class':'form-control'}}) }}
+            {{ form_row (form.is_active, {attr:{'class':'form-control'}}) }} <br>
+            <button class="btn btn-outline-primary btn-block">{{ button_label|default('Save') }}</button>
+        {{ form_end(form) }}
+    </div>
+    <div class="col-md-3">
+    </div>
+<div>

@@ -45,19 +45,19 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-12">
                                 <h2 class="text-center">Facture N° 0{{ paiement.id }}</h2>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-12">
                                 <h3>Eleve :</h3>
                                 <span>{{ paiement.inscription.eleve.nomComplet|upper }}, {{ paiement.inscription.classe.designation~' '~paiement.inscription.classe.options.designation }}</span>
-                            </div>
+                            </div> <br>
                         </div>
                         <div class="row">
-                            <div class="col">
-                                <table>
+                            <div class="col-md-12">
+                                <table class="table">
                                     <thead>
                                         <th>Designation</th>
                                         <th>Montant</th>
@@ -66,17 +66,17 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{{ paiement.designation }}</td>
-                                            <td>{{ paiement.montant }}</td>
-                                            <td>{{ paiement.montant_paye }}</td>
-                                            <td>{{ paiement.montant_reste }}</td>
+                                            <td>{{ paiement.frais.designation }}</td>
+                                            <td>{{ paiement.frais.montant }}</td>
+                                            <td>{{ paiement.montantPaye }}</td>
+                                            <td>{{ paiement.montantReste }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        </div><br>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-6">
                                 SIGNATURE
                             </div>
                         </div>

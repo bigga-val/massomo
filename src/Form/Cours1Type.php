@@ -2,14 +2,15 @@
 
 namespace App\Form;
 
-use App\Entity\Classe;
 use App\Entity\Cours;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Classe;
+use App\Entity\Professeur;
 
-class CoursType extends AbstractType
+class Cours1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -18,6 +19,10 @@ class CoursType extends AbstractType
             ->add('promotion', EntityType::class,[
                 'class'=>Classe::class,
                 'choice_label'=>'designation'
+            ])
+            ->add('professeur', EntityType::class,[
+                'class'=>Professeur::class,
+                'choice_label'=>'nomComplet'
             ])
             ->add('is_active')
         ;

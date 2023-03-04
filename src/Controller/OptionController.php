@@ -34,7 +34,7 @@ class OptionController extends AbstractController
     public function showOptions()
     {
         $getAllOption = $this->getDoctrine()->getRepository(Option::class)->findAll();
-        return $this->render('inscription/index/html.twig',[
+        return $this->render('option/listeOption.html.twig',[
             'options'=>$getAllOption
         ]);
     }

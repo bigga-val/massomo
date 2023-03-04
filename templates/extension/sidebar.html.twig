@@ -6,7 +6,7 @@
         <!-- Brand -->
         <div class="sidenav-header  align-items-center">
             <a class="navbar-brand" href="javascript:void(0)">
-                <img src="../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+                <img src="../assets/img/logoFleurons.jpeg" width="100"   class="navbar-brand-img" alt="fleurons">
             </a>
         </div>
         <div class="navbar-inner">
@@ -57,6 +57,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ path('cours_new') }}">
+                            <i class="ni ni-send text-dark"></i>
+                            <span class="nav-link-text">Cours</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('cours_content_index') }}">
+                            <i class="ni ni-send text-dark"></i>
+                            <span class="nav-link-text">Contenu du cours</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ path('logistique') }}">
                             <i class="ni ni-send text-dark"></i>
                             <span class="nav-link-text">Logistique</span>
@@ -80,32 +92,37 @@
                             <span class="nav-link-text">Etat de besoin</span>
                         </a>
                     </li>
+                    
 
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">
                 <!-- Heading -->
-                <h6 class="navbar-heading p-0 text-muted">
-                    <span class="docs-normal">Documentation</span>
-                </h6>
+               
                 <!-- Navigation -->
                 <ul class="navbar-nav mb-md-3">
                     <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
+                        <a class="nav-link" href="{{ path('liste_prof') }}" target="_blank">
                             <i class="ni ni-spaceship"></i>
-                            <span class="nav-link-text">Getting started</span>
+                            <span class="nav-link-text">Liste des profs</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" target="_blank">
+                        <a class="nav-link" href="{{ path('liste_cours') }}" target="_blank">
                             <i class="ni ni-palette"></i>
-                            <span class="nav-link-text">Foundation</span>
+                            <span class="nav-link-text">Liste des Classes </span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html" target="_blank">
+                        <a class="nav-link" href="{{ path('/addClass') }}" target="_blank">
+                            <i class="ni ni-palette"></i>
+                            <span class="nav-link-text">Nouvelle Classe </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('addProf') }}" target="_blank">
                             <i class="ni ni-ui-04"></i>
-                            <span class="nav-link-text">Components</span>
+                            <span class="nav-link-text">Nouveau Prof</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -117,7 +134,7 @@
                     <li class="nav-item">
                         <a class="nav-link active active-pro" href="upgrade.html">
                             <i class="ni ni-send text-dark"></i>
-                            <span class="nav-link-text">Upgrade to PRO</span>
+                            <span class="nav-link-text">GESTIONS DES CLASSES ET PROFS</span>
                         </a>
                     </li>
                 </ul>

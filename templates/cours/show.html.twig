@@ -1,3 +1,21 @@
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Cours{% endblock %}
+
+{% block body %}
+    <h1>Cours</h1>
+
+    <table class="table">
+        
+    </table>
+
+    <a href="{{ path('cours_index') }}" class="btn btn-outline-secondary">back to list</a>
+    <a href="{{ path('cours_edit', {'id': cour.id}) }} " class="btn btn-outline-secondary">edit</a>
+
+    {{ include('cours/_delete_form.html.twig') }}
+{% endblock %} #}
+
+
 {% include "extension/sidebar.html.twig" %}
 
 <!-- Content Wrapper. Contains page content -->
@@ -7,7 +25,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1><center> Les Professeurs De Notre Ecole </center></h1>
+                    <h1><center> Contenu du cours </center></h1>
                 </div>
 
             </div>
@@ -27,30 +45,27 @@
                 </div>
                 <div class="card-body">
                     <table id="example2" class="table table-bordered table-borderless table-striped table-hover">
-                        <thead class="bg-primary">
-                        <tr>
-
-                            <th>Noms complets</th>
-                            <th>Numéros Téléphones</th>
-                            <th>Adresses</th>
-                            <th>Option</th>
-
-
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for allprof in allprof %}
+                       
+                       <tbody>
                             <tr>
-                                <td> {{ allprof.noms | raw }}</td>
-                                <td> {{ allprof.numeros_telephone | raw }}</td>
-                                <td> {{ allprof.adresse | raw }}</td>
-
-                                <td><a name="btn_modifier" id="btn_modifier" class="btn btn-info btn-sm" href="{ path("prof", {'id':professeur.id}) }"  data-toggle="modal" data-target="#modal-default">Modifier</a></td-->
-
+                                <th>Id</th>
+                                <td>{{ cour.id }}</td>
                             </tr>
-                        {% endfor %}
+                            <tr>
+                                <th>Designation</th>
+                                <td>{{ cour.designation }}</td>
+                            </tr>
+                            <tr>
+                                <th>Promotion</th>
+                                <td>{{ cour.promotion.designation }}</td>
+                            </tr>
+                            <tr>
+                                <th>Is_active</th>
+                                <td>{{ cour.isActive ? 'Yes' : 'No' }}</td>
+                            </tr>
                         </tbody>
                     </table>
+                    
                 </div>
                 <!-- /.card-body -->
             </div><!-- /.container-fluid -->
@@ -61,10 +76,6 @@
         <i class="fas fa-chevron-up"></i>
     </a>
 </div>
-
-
-<!-- /.content-wrapper -->
-<script src="{{ asset('my_js/get_deces.js') }}"></script>
 
 
 {% include "/extension/footer.html.twig" %}

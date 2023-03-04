@@ -1,0 +1,103 @@
+{# {% extends 'base.html.twig' %}
+
+{% block title %}CoursContent{% endblock %}
+
+{% block body %}
+    <h1>CoursContent</h1>
+
+    <table class="table">
+        
+    </table>
+
+    
+{% endblock %} #}
+
+
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Cours{% endblock %}
+
+{% block body %}
+    <h1>Cours</h1>
+
+    <table class="table">
+        
+    </table>
+
+    <a href="{{ path('cours_index') }}" class="btn btn-outline-secondary">back to list</a>
+    <a href="{{ path('cours_edit', {'id': cour.id}) }} " class="btn btn-outline-secondary">edit</a>
+
+    {{ include('cours/_delete_form.html.twig') }}
+{% endblock %} #}
+
+
+{% include "extension/sidebar.html.twig" %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <h1><center> Contenu du cours </center></h1>
+                </div>
+
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title"> </h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        <!--<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>-->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-borderless table-striped table-hover">
+                             <tbody>
+                                <tr>
+                                    <th>Id</th>
+                                    <td>{{ cours_content.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Classe</th>
+                                    <td>{{ cours_content.classe.designation }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Professeur</th>
+                                    <td>{{ cours_content.prof.nomComplet }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Chapitre</th>
+                                    <td>{{ cours_content.chapitre | upper}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Contenu</th>
+                                    <td>{{ cours_content.contenue }}</td>
+                                </tr>
+                            </tbody>
+                    </table></br>
+                     <a href="{{ path('cours_content_index') }}" class="btn btn-outline-success center ">back to list</a>
+                     <a href="{{ path('cours_content_edit', {'id': cours_content.id}) }}" class="btn btn-outline-warning center ">edit</a>
+                    {{ include('cours_content/_delete_form.html.twig') }}
+                    
+                </div>
+                <!-- /.card-body -->
+            </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+    <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+</div>
+
+
+{% include "/extension/footer.html.twig" %}
+

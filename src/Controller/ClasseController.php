@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\common\persistence\ObjectManager;
 use App\Entity\Classe;
+use App\Entity\Professeur;
 use App\Entity\date;
 use App\Entity\Cours;
 use App\Entity\Option;
@@ -21,9 +22,11 @@ use App\Form\ClasseType;
 use App\Form\OptionType;
 use App\Respository\CoursRepository;
 use App\Respository\OptionRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use symfony\Component\Form\Extension\Core\Type\TextType;
-use symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use symfony\Component\Form\Extension\Core\Type\SubmittType;
+
 
 
 
@@ -31,6 +34,38 @@ use symfony\Component\Form\Extension\Core\Type\SubmittType;
 
 class ClasseController extends AbstractController
 {
+   /**
+    * @Route("/addClass", name="/addClass")
+    */
+    public function addClass(Request $request, EntityManagerInterface $manage) 
+    {
+        $addClass = new Classe();
+        $addCl = $this->createFormBuilder($addClass)
+                      ->add('Options', EntityType::class,[
+                        'class'=>option::class,
+                        'choice_label'=>'designation',
+                      ])
+                      ->add('titulaire', EntityType::class,[
+                        'class'=>Professeur::class,
+                        'choice_label'=>'nomComplet',
+                      ])
+                      ->add('designation', TextareaType::class,[
+                        'attr' => ['class'=>'tinymce']
+                      ])
+                      ->add('is_active')
+                      ->getForm();
+            $addCl->handleRequest($request);
+            if($addCl->isSubmitted() && $addCl->isValid()){
+                $manage->persist($addClass);
+                $manage->flush();
+                return $this->redirectToRoute('liste_cours');
+                 
+            }
+            return $this->render('classe/classe.html.twig', [
+                'formClasse'=>$addCl->createView()
+            ]); 
+    }
+
     /**
      * @Route("/classe", name="classe")
      */
@@ -51,7 +86,7 @@ class ClasseController extends AbstractController
      * @Route("liste_cours", name="liste_cours")
      */
     public function liste(Request $request, EntityManagerInterface $manager, ClasseRepository  $coursrepo){
-        $allcours = $coursrepo->allcours();
+        $allcours =  $this->getDoctrine()->getRepository(Classe::class)->findAll();
         return $this->render('classe/liste_classe.html.twig',[
             'allcours' => $allcours
         ]);
