@@ -14,6 +14,12 @@
             <!-- Argon CSS -->
             <link rel="stylesheet" href="{{ asset("assets/css/argon.css?v=1.2.0") }}" type="text/css">
 
+            <link rel="stylesheet" href="{{ asset("assets/js/summernote/summernote-bs4.min.css") }}">
+             <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css"/>
+             <!-- DataTables -->
+            <link rel="stylesheet" href="{{ asset("assets/js/datatables-bs4/css/dataTables.bootstrap4.min.css") }}">
+            <link rel="stylesheet" href="{{ asset("assets/js/datatables-responsive/css/responsive.bootstrap4.min.css") }}">
+            <link rel="stylesheet" href="{{ asset("assets/js/datatables-buttons/css/buttons.bootstrap4.min.css") }}">
         {% endblock %}
     </head>
     <body>
@@ -39,10 +45,24 @@
             <script type="text/javascript" src="{{ asset('jsforpdf/jspdf.js') }}"></script>
             <script type="text/javascript" src="{{ asset('jsforpdf/pdfFromHTML.js') }}"></script>
             <script src="{{ asset("assets/js/argon.js") }}"></script>
-            <script src="{{ asset("assets/datatables/jquery.dataTables.min.js")  }}"></script>
+            {# <script src="{{ asset("assets/datatables/jquery.dataTables.min.js")  }}"></script>
             <script src="{{ asset("assets/datatables-bs4/js/dataTables.bootstrap4.min.js")  }}"></script>
             <script src="{{ asset("assets/datatables-responsive/js/dataTables.responsive.min.js")  }}"></script>
-            <script src="{{ asset("assets/datatables-responsive/js/responsive.bootstrap4.min.js")  }}"></script>
+            <script src="{{ asset("assets/datatables-responsive/js/responsive.bootstrap4.min.js")  }}"></script> #}
+
+
+            <script src="{{ asset("assets/js/datatables/jquery.dataTables.min.js") }}"></script>
+            <script src="{{ asset("assets/js/datatables-bs4/js/dataTables.bootstrap4.min.js") }}"></script>
+            <script src="{{ asset("assets/js/datatables-responsive/js/dataTables.responsive.min.js") }}"></script>
+            <script src="{{ asset("assets/js/datatables-responsive/js/responsive.bootstrap4.min.js") }}"></script>
+            <script src="{{ asset("assets/js/datatables-buttons/js/dataTables.buttons.min.js") }}"></script>
+            <script src="{{ asset("assets/js/datatables-buttons/js/buttons.bootstrap4.min.js") }}"></script>
+            <script src="{{ asset("assets/js/jszip/jszip.min.js") }}"></script>
+            <script src="{{ asset("assets/js/pdfmake/pdfmake.min.js") }}"></script>
+            <script src="{{ asset("assets/js/pdfmake/vfs_fonts.js") }}"></script>
+            <script src="{{ asset("assets/js/datatables-buttons/js/buttons.html5.min.js") }}"></script>
+            <script src="{{ asset("assets/js/datatables-buttons/js/buttons.print.min.js") }}"></script>
+            <script src="{{ asset("assets/js/datatables-buttons/js/buttons.colVis.min.js") }}"></script>
             <script>
                 $(function () {
                     $("#example1").DataTable({

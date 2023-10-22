@@ -1,0 +1,91 @@
+{% include "extension/sidebar.html.twig" %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <h1><center>Tous les parents </center></h1>
+                </div>
+
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title"> </h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        <!--<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>-->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table  id="example2" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nom du Pere</th>
+                                <th>TelephonePrive</th>
+                                <th>Nom de la mere</th>
+                                <th>TelephoneMerePrive</th>
+                                <th class="text-center">actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for parent in parents %}
+                                <tr>
+                                    <td>{{ parent.id }}</td>
+                                    <td>{{ parent.nomPere }}</td>
+                                    <td>{{ parent.telephonePrive }}</td>
+                                    <td>{{ parent.nomMere }}</td>
+                                    <td>{{ parent.telephoneMerePrive }}</td>
+                                    <td>
+                                        <a class="btn btn-outline-info btn-inline"href="{{ path('parents_show', {'id': parent.id}) }}">show</a>
+                                        <a class="btn btn-outline-warning btn-inline"href="{{ path('parents_edit', {'id': parent.id}) }}">edit</a>
+                                        <a class="btn btn-outline-primary btn-inline" href="{{ path('parents_new') }}">Create new</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="13">no records found</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                   
+                </div>
+                <!-- /.card-body -->
+            </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+    <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+</div>
+
+<script>
+      $(function () {
+        $("#example1").DataTable({
+          "responsive": true, "lengthChange": false, "autoWidth": false,
+          "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+          "responsive": true,
+        });
+      });
+    </script>
+
+{% include "/extension/footer.html.twig" %}
+

@@ -15,9 +15,27 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="dashboard.html">
+                        <a class="nav-link active" href="{{ path('statEcole') }}"  onclick="handleFormSubmission()">
                             <i class="ni ni-tv-2 text-primary"></i>
-                            <span class="nav-link-text">Dashboard</span>
+                            <span class="nav-link-text">Statistiques</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ path('dashboard_finance') }}" onclick="handleFormSubmission()">
+                            <i class="ni ni-tv-2 text-primary"></i>
+                            <span class="nav-link-text">Dashboard Finance</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('parents_index') }}"  onclick="handleFormSubmission()">
+                            <i class="ni ni-send text-dark"></i>
+                            <span class="nav-link-text">Parents</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_tuteur_index') }}">
+                            <i class="ni ni-send text-dark"></i>
+                            <span class="nav-link-text">Tuteur</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -51,24 +69,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ path('frais') }}">
+                            <i class="ni ni-bullet-list-67 text-default"></i>
+                            <span class="nav-link-text">Liste des frais</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ path('eleves_en_ordre') }}">
                             <i class="ni ni-key-25 text-info"></i>
                             <span class="nav-link-text">Elèves en Ordre</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('cours_new') }}">
-                            <i class="ni ni-send text-dark"></i>
-                            <span class="nav-link-text">Cours</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('cours_content_index') }}">
-                            <i class="ni ni-send text-dark"></i>
-                            <span class="nav-link-text">Contenu du cours</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
+                    
+                    {# <li class="nav-item">
                         <a class="nav-link" href="{{ path('logistique') }}">
                             <i class="ni ni-send text-dark"></i>
                             <span class="nav-link-text">Logistique</span>
@@ -79,20 +92,19 @@
                             <i class="ni ni-circle-08 text-pink"></i>
                             <span class="nav-link-text">Paramètres</span>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('materiel') }}">
-                            <i class="ni ni-circle-08 text-pink"></i>
-                            <span class="nav-link-text">Logistique</span>
+                    </li> #}
+                   <li class="nav-item">
+                        <a class="nav-link" href="{{ path('entree_caisse') }}">
+                            <i class="ni ni-bullet-list-67 text-default"></i>
+                            <span class="nav-link-text">Entree Caisse</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('besionEtat') }}">
-                            <i class="ni ni-circle-08 text-pink"></i>
-                            <span class="nav-link-text">Etat de besoin</span>
+                        <a class="nav-link" href="{{ path('sortie_caisse') }}">
+                            <i class="ni ni-bullet-list-67 text-default"></i>
+                            <span class="nav-link-text">Sortie Caisse</span>
                         </a>
                     </li>
-                    
 
                 </ul>
                 <!-- Divider -->
@@ -100,7 +112,7 @@
                 <!-- Heading -->
                
                 <!-- Navigation -->
-                <ul class="navbar-nav mb-md-3">
+                {# <ul class="navbar-nav mb-md-3">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('liste_prof') }}" target="_blank">
                             <i class="ni ni-spaceship"></i>
@@ -137,11 +149,15 @@
                             <span class="nav-link-text">GESTIONS DES CLASSES ET PROFS</span>
                         </a>
                     </li>
-                </ul>
+                </ul> #}
             </div>
         </div>
     </div>
 </nav>
 {% include "extension/navbar.html.twig" %}
 
+{% endblock %}
+
+{% block javascripts %}
+     <script src="{{ asset('my_js/son.js') }}"></script>
 {% endblock %}

@@ -27,62 +27,73 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col text-right">
-                            <button href="#!" class="btn btn-sm btn-primary" onclick="HTMLtoPDF()">Generer PDF</button>
+                            <button href="#!" class="btn btn-sm btn-primary" onclick="b()">Generer PDF</button>
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive" id="HTMLtoPDF">
+                <div class="table-responsive" id="imprime">
                     <div class="container">
                         <div class="row">
-                            <div class="col">
-                                <img src="{{ asset('assets/img/logo_insoft.png') }}" alt="Logo" class="img-responsive h-50 w-25">
-                                <h3>PROVINCE DU LUALABA</h3>
-                                <h3>VILLE DE KOLWEZI</h3>
-                                <h3>COMPLEXE SCOLAIRE INSOFTWARE</h3>
-                            </div>
-                            <div class="col">
-
+                            <div class="col-md-3">
+                                {# <img src="{{ asset('assets/img/logoFleurons.jpeg') }}" alt="Logo" class="img-responsive h-50 w-25"> #}
+                                {# <h5>MINISTERE DE L'ENSIGNEMENT PRIMAIRE, SECONDAIRE ET HUMANITAIRE</h5> #}
+                                <h2 classs="text-center">PROVINCE DU LUALABA</h2>
+                                <h3 classs="text-center">VILLE DE KOLWEZI</h3>
+                                <h4 classs="text-center">COMPLEXE SCOLAIRE LES FLEURONS</h4>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
-                                <h2 class="text-center">Facture N° 0{{ paiement.id }}</h2>
+                            <div class="col-md-4">
+                                <h1 classs="text-center">Facture N° 0</h1>
                             </div>
-                        </div>
+                        </div><br>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-4">
                                 <h3>Eleve :</h3>
-                                <span>{{ paiement.inscription.eleve.nomComplet|upper }}, {{ paiement.inscription.classe.designation~' '~paiement.inscription.classe.options.designation }}</span>
+                                <br>
+                               <strong> <span>{{ paiement.inscription.eleve.nomComplet|upper }}, {{ paiement.inscription.classe.designation~' '~paiement.inscription.idOption.designation }}</span></strong>
                             </div> <br>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
-                                <table class="table">
+                            <div class="col-md-3">
+                                <table >
                                     <thead>
-                                        <th>Designation</th>
-                                        <th>Montant</th>
-                                        <th>M. Payé</th>
-                                        <th>M. Resté</th>
+                                       <tr class="table">
+                                            <th><strong>Motif</strong></th>
+                                            <th> <strong>Montant</strong></th>
+                                            <th><strong>M. Payé</strong></th>
+                                            <th><strong>M. Resté</strong></th>
+                                       </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>{{ paiement.frais.designation }}</td>
-                                            <td>{{ paiement.frais.montant }}</td>
-                                            <td>{{ paiement.montantPaye }}</td>
-                                            <td>{{ paiement.montantReste }}</td>
+                                        <tr class="table ">
+                                            <td><strong>{{ paiement.frais.designation }}</strong></td>
+                                            <td><strong>{{ paiement.frais.montant }}</strong></td>
+                                            <td><strong>{{ paiement.montantPaye }}</strong></td>
+                                            <td><strong>{{ paiement.montantReste }}</strong></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                        </div><br>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                        <br>
                         <div class="row">
                             <div class="col-md-6">
                                 SIGNATURE
                             </div>
+                            <br>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-3"><br>
+                                <p>
+                                     complexe scolaire les fleurons, une école qui forme <br>les futurs cadres.
+                                </p>
+                            </div>
                         </div>
+                        <br>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -91,4 +102,7 @@
 </div>
 {% block javascripts %}
     <script src="{{ asset('my_js/paiement_frais_par_classe.js') }}"></script>
+    <script src="{{ asset('my_js/printThis.js') }}"></script>
+    <script src="{{ asset('my_js/son.js') }}"></script>
+
 {% endblock %}

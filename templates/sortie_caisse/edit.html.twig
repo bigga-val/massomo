@@ -1,0 +1,37 @@
+{% include 'extension/sidebar.html.twig' %}
+
+
+
+{% block body %}
+<div class=" container row">
+    <div class="col-md-12">
+        <h1>Edit SortieCaisse</h1>
+
+        <form action="" method="post">
+        <input type="hidden" name="_token" value="{{ csrf_token('sortie') }}">
+
+        <div class="form-group">
+            <label for="montant">Montant *</label>
+            <input type="number" class="form-control" required name="montant" id="montant" value="{{ sortie_caisse.montant }}">
+        </div>
+        <div class="form-group">
+            <label for="">Raison *</label>
+            <textarea cols="30" rows="10" class="form-control" required name="raison" id="raison" >{{ sortie_caisse.raison }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="">Introduit par</label>
+            <input type="text" readonly class="form-control" value="{{ app.user.email }}" >
+        </div>
+        <div class="form-group">
+            <label for="">A modifier par</label>
+            <input type="text" readonly class="form-control" value="{{ app.user.email }}" >
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-success" value="Soumettre">
+        </div>
+    </form>
+
+{#    {{ include('sortie_caisse/_delete_form.html.twig') }}#}
+    </div>
+</div>
+{% endblock %}

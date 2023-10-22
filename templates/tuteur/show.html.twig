@@ -1,0 +1,67 @@
+{% include 'extension/sidebar.html.twig' %}
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                </div>
+            </div>
+            <!-- Card stats -->
+        </div>
+    </div>
+</div>
+
+
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="container-fluid mt--6">
+        <div class="row">
+            <div class="col">
+                <div class="card border-0">
+                    <div id="map-default" class="map-canvas" data-lat="40.748817" data-lng="-73.985428" style="height: 600px;">
+                        <center><h1 class="heading-small text-muted mb-4">Detail tuteur</h1></center>
+                        <div class="row">
+                        <div class="col-md-12">
+                               <table class="table">
+                                 <tbody>
+                                        <tr>
+                                            <th>Id</th>
+                                            <td>{{ tuteur.id }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Nom Complet</th>
+                                            <td>{{ tuteur.nomComplet }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Profession</th>
+                                            <td>{{ tuteur.Profession }}</td>
+                                        </tr>
+                                         <tr>
+                                    <th>Telephone</th>
+                                    <td>{{ tuteur.telephone }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Adresse domicile</th>
+                                        <td>{{ tuteur.adresseTuteur }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Telephone Bureau</th>
+                                        <td>{{ tuteur.telephoneBureau }}</td>
+                                    </tr>
+                                
+                                </tbody>
+                            </table>
+                                <a href="{{ path('app_tuteur_index') }}">back to list</a>
+                                <a href="{{ path('app_tuteur_edit', {'id': tuteur.id}) }}">edit</a>
+                                {{ include('tuteur/_delete.html.twig') }}
+                        </div>  
+                        
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include "extension/footer.html.twig" %}

@@ -103,10 +103,16 @@ class EleveController extends AbstractController
      */
     public function eleves_disponibles()
     {
+        $session = new Session();
+        $annee = $this->getDoctrine()->getRepository(AnneeScolaire::class)
+            ->find($session->get('id_annee'));
         $eleves = $this->getDoctrine()->getRepository(Eleve::class)
             ->findAll();
+        $inscrits = $this->getDoctrine()->getRepository(Inscription::class)
+            ->findBy(["annee_scolaire"=> $annee]);
         return $this->render('eleve/eleves_disponibles.html.twig', [
-            'eleves'=>$eleves
+            'eleves'=>$eleves,
+            'inscrits'=>$inscrits
         ]);
     }
 
@@ -142,6 +148,8 @@ class EleveController extends AbstractController
                 $inscription->setCreatedAt(new \DateTime('now'));
                 $entityManager->persist($inscription);
                 $entityManager->flush();
+
+                return $this->redirectToRoute("eleves_disponibles");
             }
         }
         //dd($eleve);

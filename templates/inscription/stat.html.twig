@@ -1,0 +1,252 @@
+{% include "extension/sidebar.html.twig" %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <h1><center>Tous les eleves inscrits </center></h1>
+                </div>
+
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title"> </h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        <!--<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>-->
+                    </div>
+                </div>
+                <div class="card-body">
+                     <div class="row">
+                            <div class="col-md-3">
+                            <h3 class="text-center"> Total General</h3>
+                                <table class="table">
+                                      <thead class="bg-primary text-white">
+                                           <tr>
+                                               <th>TOTAL</th>
+                                               <th>GENRE</th>
+                                               <th>EFFECTIF</th>
+                                           </tr>
+                                      </thead>
+                                      <tbody class="fg-primary">
+                                         {% for tot in genreTot %}
+                                          <tr>
+                                               <td></td>
+                                               <td>{{tot.genre}}</td>
+                                               <td>{{tot.age}}</td>
+                                          </tr>
+                                         {% endfor %}
+
+
+                                          {% for stat in total %}
+                                          <tr class="bg-primary text-white">
+                                               <td>TOTAL</td>
+                                               <td></td>
+                                               <td>{{stat.tot}}</td>
+                                         </tr>
+                                         {% endfor %}
+                                      </tbody>
+                                </table>
+                           </div>
+
+                           <div class="col-md-3">
+                                <h3 class="text-center"> Total Maternelle</h3>
+                                <table class="table">
+                                      <thead class="bg-info text-white">
+                                           <tr>
+                                               <th>TOTAL</th>
+                                               <th>GENRE</th>
+                                               <th>EFFECTIF</th>
+                                           </tr>
+                                      </thead>
+                                      <tbody>
+                                          
+                                           {% for ag in genreMat %}
+                                           <tr>
+                                               <td></td>
+                                               <td>{{ag.genre}}</td>
+                                               <td>{{ag.age}}</td>
+                                           </tr>
+                                            {% endfor %} 
+
+                                            {% for mat in maternelle %}
+                                                <tr class="text-white bg-info">
+                                                    <td >total</td>
+                                                    <td></td>
+                                                    <td >{{mat.mat}}</td>
+                                                </tr>
+                                            {% endfor %}
+                                          
+                                      </tbody>
+                                </table>
+                           </div>
+
+                           <div class="col-md-3">
+                                <h3 class="text-center"> Total Primaire</h3>
+                                <table class="table">
+                                      <thead class="bg-info text-white">
+                                           <tr>
+                                               <th>TOTAL</th>
+                                               <th>GENRE</th>
+                                               <th>EFFECTIF</th>
+                                           </tr>
+                                      </thead>
+                                      <tbody>
+                                          {% for agP in genrePrimaire %}
+                                          <tr>
+                                               <td></td>
+                                               <td>{{agP.genre}}</td>
+                                               <td>{{agP.age}}</td>
+                                           </tr>
+                                         {% endfor %}
+
+                                          {% for stat in primaire %}
+                                          <tr class="bg-info text-white">
+                                               <td>TOTAL</td>
+                                               <td></td>
+                                               <td>{{stat.primaire}}</td>
+                                               
+                                           </tr>
+                                         {% endfor %}
+                                      </tbody>
+                                </table>
+                           </div>
+                           <div class="col-md-3">
+                                <h3 class="text-center"> Total Secondaire</h3>
+                                <table class="table">
+                                      <thead class="bg-warning text-white">
+                                           <tr>
+                                               <th>TOTAL</th>
+                                               <th>GENRE</th>
+                                               <th>EFFECTIF</th>
+                                           </tr>
+                                      </thead>
+                                      <tbody>
+                                         {% for agS in genreSecondaire %}
+                                          <tr>
+                                               <td></td>
+                                               <td>{{agS.genre}}</td>
+                                               <td>{{agS.age}}</td>
+                                           </tr>
+                                         {% endfor %}
+                                           
+
+                                          {% for stat in secondaire %}
+                                          <tr class="bg-warning text-white">
+                                               <td>TOTAL</td>
+                                               <td></td>
+                                               <td>{{stat.secondaire}}</td>
+                                               
+                                           </tr>
+                                         {% endfor %}
+                                      </tbody>
+                                </table>
+                           </div>
+                     </div> <br>
+                     <div class="row">
+                         <div class="col-md-2">
+                         </div>
+                         <div class="col-md-9">
+                              <center> <h1 class="text-center text-info"> statistique par classe</h1> </center>
+
+                              <div class="card-header border-0">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        {# <h3 class="mb-0">Elèves en ordre</h3> #}
+                                    </div>
+                                    <div class="col text-right">
+                                        <select name="classe" id="classe" class="form-control">
+                                            <option selected="selected">Choisir une classe...</option>>
+                                            {% for classe in liste_classe %}
+                                                <option value="{{ classe.id }}">{{ classe.designation }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <select name="frais" id="option" class="form-control">
+                                            <option selected="selected">Choisir une option...</option>>
+                                            {% for option in liste_option %}
+                                                <option value="{{ option.id }}">{{ option.designation }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        
+                                    </div>
+                                        <input type="button" class="btn btn-primary" name="recherche" id="recherche" value="RECHERCHER">
+                                        <div class="col text-right">
+                                        {# <button href="#!" class="btn btn-sm btn-primary" onclick="HTMLtoPDF()">Generer PDF</button> #}
+                                        </div>
+                                </div>
+                              </div><br>
+
+                              <table class="table" id="tableau"">
+                                  <thead>
+                                        <tr>
+                                            <th>TOTAL</th>
+                                            <th>GENRE</th>
+                                            <th>EFFECTIFS</th>
+                                        </tr>
+                                   </thead>
+                                   <tbody>
+                                        {% for classe in getByClasse %}
+                                          {% set i = 1 %}
+                                              <tr> 
+                                                  <td>1</td>
+                                                  <td>{{classe.id_eleve_id.nom_complet}}</td>
+                                                  <td>{{classe.id_option_id}}</td>
+                                              </tr>
+                                            {% set i = i + 1 %}
+                                        {% endfor %}
+                                        <tr> 
+                                                  <td>1</td>
+                                                  <td>2</td>
+                                                  <td>3</td>
+                                              </tr>
+                                   </tbody> 
+                                </table>
+                              </div>
+                         </div>
+                         <div class="col-md-1">
+                         </div>
+                     </div>
+                </div>
+                <!-- /.card-body -->
+            </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+    <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+</div>
+
+<script>
+      $(function () {
+        $("#example1").DataTable({
+          "responsive": true, "lengthChange": false, "autoWidth": false,
+          "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+          "responsive": true,
+        });
+      });
+    </script>
+
+{% include "/extension/footer.html.twig" %}
+
+{% block javascripts %}
+     <script src="{{ asset('my_js/stat_par_classe.js') }}"></script>
+{% endblock %}

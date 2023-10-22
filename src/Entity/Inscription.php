@@ -47,6 +47,11 @@ class Inscription
      */
     private $token;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Option::class, inversedBy="id_option")
+     */
+    private $idOption;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +125,18 @@ class Inscription
     public function setToken(?string $token): self
     {
         $this->token = $token;
+
+        return $this;
+    }
+
+    public function getIdOption(): ?Option
+    {
+        return $this->idOption;
+    }
+
+    public function setIdOption(?Option $idOption): self
+    {
+        $this->idOption = $idOption;
 
         return $this;
     }

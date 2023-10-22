@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Paiement;
+use App\Entity\AnneeScolaire;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query\ResultSetMapping;
 
 /**
  * @method Paiement|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,6 +50,21 @@ class PaiementRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function EntreesCaisse($anneeID)
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            '
+            select SUM(p.montant_paye)
+                from App\Entity\paiement p, App\Entity\inscription i, App\Entity\anneeScolaire a 
+                 where a.id = i.annee_scolaire
+                 and i.id = p.inscription
+                 and a.id = :anneeID
+            '
+        );
+        return $query->setParameter('anneeID',$anneeID)->getResult();
+    }
 
     public function findFraisNonRegles($inscription)
     {
@@ -139,16 +157,34 @@ class PaiementRepository extends ServiceEntityRepository
                     p.id, c.designation classe, o.designation option, substring(p.created_at, 1, 10) date  
                 FROM App\Entity\Paiement p, App\Entity\Frais f, App\Entity\Eleve e, App\Entity\Inscription i,
                     App\Entity\Classe c, App\Entity\Option o
-                where p.is_active = :active
+                where p.is_active = true   
                     and f.id = p.frais
                     and i.id = p.inscription
                     and e.id = i.eleve
-                    and o.id = c.options
+                   
                     and c.id = i.classe
                 ORDER BY date asc
             '
         );
-        return $query->setParameter('active', true)->getResult();
+        return $query->getResult();
     }
+   
+
+    // public function EntreeParMois($anneeID){
+    //     $rsm = new ResultSetMapping();
+    //     $em = $this->getEntityManager();
+    //     $sql = "select concat(month(p.created_at),'-', year(p.created_at)) Mois, SUM(p.montant_paye) Montant
+    //             from App\Entity\paiement p, App\Entity\frais f, App\Entity\annee_scolaire a
+    //             where p.frais_id = f.id
+    //             and f.annee_scolaire = a.id
+    //             and a.id = :anneeID
+    //             group by month(p.created_at)
+    //             ORDER by date(p.created_at)";
+    //     $query = $em->createNativeQuery($sql, $rsm);
+    //    // $query->setParameter('anneeID', $anneeID);
+    //     //return $query->setParameter('anneeID', $anneeID)->getResult();
+    //     return $query->setParameter('anneeID', $anneeID)->getResult();
+    // }
+
 }
 

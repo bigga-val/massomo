@@ -32,7 +32,7 @@
                         </div>
                         <div class="col text-right">
                             <div class="form-group">
-                                <input type="submit" class="btn btn-primary" value="ENREGISTRER">
+                                <input type="submit" class="btn btn-primary" onclick="handleFormSubmission()" value="ENREGISTRER">
                             </div>
                         </div>
                     </div>
@@ -41,6 +41,14 @@
                         <h6 class="heading-small text-muted mb-4">Information élève</h6>
                         <div class="pl-lg-4">
                         <div class="row">
+                            <div class="col">
+                                <label class="form-control-label" for="input-username">Parents</label>
+                                <select name="parents" id="parents" class="form-control">
+                                    {% for parents in parents %}
+                                        <option value="{{ parents.id }}">{{ parents.nomPere }} et {{ parents.nomMere }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                             <div class="col">
                                 <label class="form-control-label" for="input-username">Tuteur</label>
                                 <select name="tuteur" id="tuteur" class="form-control">
@@ -66,10 +74,18 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <label class="form-control-label" for="input-username">Option</label>
+                                <label class="form-control-label" for="input-username">Classe</label>
                                 <select name="classe" id="classe" class="form-control">
                                     {% for classe in classes %}
                                         <option value="{{ classe.id }}">{{ classe.designation}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label class="form-control-label" for="input-username">Option</label>
+                                <select name="id_option" id="id_option" class="form-control">
+                                    {% for opt in options %}
+                                        <option value="{{ opt.id }}">{{ opt.designation}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -81,6 +97,14 @@
                                     <input type="text" class="form-control" placeholder="Nom et Postnom" name="nom_complet" id="nom_complet">
                                     <input type="hidden" name="_token" value="{{ csrf_token('inscription') }}">
                                 </div>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-genre">Genre</label>
+                                    <select name="genre" id="genre" class="form-control">
+                                            <option value="Masculin">Homme</option>
+                                            <option value="Feminin">Feminin</option>
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-username">Adresse</label>
                                     <input type="text" class="form-control" placeholder="Adresse" name="adresse" id="adresse">
@@ -102,10 +126,49 @@
                             </div>
                         </div>
                         </div>
+
+
+
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-control-label" for="input-username">Maladie chronique?</label>
+                                <select name="maladieChronique" id="maladieChronique" class="form-control">
+                                        <option value="Non">Non</option>
+                                        <option value="Oui">Oui</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-username">nom de la maladie</label>
+                                    <input type="text" class="form-control" placeholder="nom de la maladie" name="nomMaladie">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label class="form-control-label" for="input-username">Apte à l'éducation physique?</label>
+                                <select name="aptePhysique" id="aptePhysique" class="form-control">
+                                        <option value="OUI">OUI</option>
+                                        <option value="NON">NON</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="certificatMedical">certificat médical</label>
+                                    <input type="file" class="form-control" placeholder="certificat" name="certificatMedical">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label class="form-control-label" for="input-username">Photographier?</label>
+                                <select name="photographier" id="photographier" class="form-control">
+                                        <option value="OUI">OUI</option>
+                                        <option value="NON">NON</option>
+                                </select>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
     {% include "extension/footer.html.twig" %}
+    <script src="{{ asset('my_js/son.js') }}"></script>
 </div>

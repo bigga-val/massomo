@@ -1,0 +1,88 @@
+{% include 'extension/sidebar.html.twig' %}
+
+<div class="container">
+    <div class="row">
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body rounded-lg" style="background-color: #99e6ff">
+                    <h3>Entree</h3>
+                    <span id="montantEntre">{{ entreesCaisse}} </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body rounded-lg" style="background-color: #ff1a75">
+                    <h3>Sortie</h3>
+                    <span id="montantSorti">{{ sortiesCaisse }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body rounded-lg" style="background-color: #80ff80">
+                    <h3>Total</h3>
+                    <span>{{ totalCaisse }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+
+                    <canvas id="mouvementChart" aria-label="chart" role="img">
+
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Entrees par mois</h3>
+                </div>
+                <div class="card-body">
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3>Sorties par mois par mois</h3>
+                </div>
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% block javascripts %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ asset('my_js/historique_paiement.js') }}"></script>
+    <script>
+        var entree = document.getElementById("montantEntre").innerText
+        var sortie = document.getElementById("montantSorti").innerText
+
+        const barCanvas = document.getElementById("mouvementChart")
+        const barChart = new Chart(barCanvas, {
+            type:"doughnut",
+            data:{
+                labels:["Entree", "Sortie"],
+                datasets:[{
+                    data:[entree, sortie],
+                    backgroundColor:[
+                        "#99e6ff",
+                        "#ff1a75"
+                    ]
+                }]
+            }
+        })
+    </script>
+{% endblock %}

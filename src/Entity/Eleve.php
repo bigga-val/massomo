@@ -57,6 +57,41 @@ class Eleve
      */
     private $created_at;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Parents::class, inversedBy="eleves")
+     */
+    private $parents;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $maladieChronique;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nomMaladie;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $aptePhysique;
+
+    /**
+     * @ORM\Column(type="blob", nullable=true)
+     */
+    private $certificatMedical;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $photographier;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $genre;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -154,6 +189,90 @@ class Eleve
     public function setCreatedAt(?\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getParents(): ?Parents
+    {
+        return $this->parents;
+    }
+
+    public function setParents(?Parents $parents): self
+    {
+        $this->parents = $parents;
+
+        return $this;
+    }
+
+    public function getMaladieChronique(): ?string
+    {
+        return $this->maladieChronique;
+    }
+
+    public function setMaladieChronique(string $maladieChronique): self
+    {
+        $this->maladieChronique = $maladieChronique;
+
+        return $this;
+    }
+
+    public function getNomMaladie(): ?string
+    {
+        return $this->nomMaladie;
+    }
+
+    public function setNomMaladie(string $nomMaladie): self
+    {
+        $this->nomMaladie = $nomMaladie;
+
+        return $this;
+    }
+
+    public function getAptePhysique(): ?bool
+    {
+        return $this->aptePhysique;
+    }
+
+    public function setAptePhysique(?bool $aptePhysique): self
+    {
+        $this->aptePhysique = $aptePhysique;
+
+        return $this;
+    }
+
+    public function getCertificatMedical()
+    {
+        return $this->certificatMedical;
+    }
+
+    public function setCertificatMedical($certificatMedical): self
+    {
+        $this->certificatMedical = $certificatMedical;
+
+        return $this;
+    }
+
+    public function getPhotographier(): ?bool
+    {
+        return $this->photographier;
+    }
+
+    public function setPhotographier(?bool $photographier): self
+    {
+        $this->photographier = $photographier;
+
+        return $this;
+    }
+
+    public function getGenre(): ?string
+    {
+        return $this->genre;
+    }
+
+    public function setGenre(string $genre): self
+    {
+        $this->genre = $genre;
 
         return $this;
     }

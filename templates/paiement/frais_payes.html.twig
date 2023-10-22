@@ -1,0 +1,210 @@
+{% include 'extension/sidebar.html.twig' %}
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Inscription</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <!-- Card stats -->
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header border-0">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h3 class="mb-0">Elève : {{ eleve.eleve.nomComplet|upper ~', '~eleve.classe.designation ~' '~eleve.classe.options.designation }}</h3>
+                        </div>
+                        <div class="col text-right">
+                            <a href="{{ path('facturer_tous_frais', {'inscription': eleve.id}) }}" class="btn btn-sm btn-primary">Tout Facturer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <form method="post" id="form-paiement">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p id="message-paiement"></p>
+                                </div>
+
+                            </div>
+{#                            <div class="row">#}
+{#                                <div class="col-md-4">#}
+{#                                    <div class="form-group">#}
+{#                                        <select name="frais" id="frais" class="form-control form-control-sm">#}
+{#                                            {% for frais in frais %}#}
+{#                                                <option label="{{frais.designation~' '~frais.montant }}" value="{{ frais.id }}">{{ frais.montant }}</option>#}
+{#                                            {% endfor %}#}
+{#                                        </select>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="col-md-4">#}
+{#                                    <div class="form-group">#}
+{#                                        <input type="hidden" name="_token" value="{{ csrf_token('paiement') }}">#}
+{#                                        <input type="text" class="form-control form-control-sm" name="montant_paye" id="montant_paye" placeholder="Montant payé *">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="col-md-4">#}
+{#                                    <div class="form-group">#}
+{#                                        <input type="hidden" class="form-control form-control-sm" id="montant_reste" name="montant_reste" placeholder="Montant resté">#}
+{#                                        <input type="text" class="form-control form-control-sm" id="reste" name="reste" placeholder="Montant resté" disabled>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                #}{#                                <div class="col-md-4">#}
+{#                                #}{#                                    <div class="form-group">#}
+{#                                #}{#                                        <select name="cretedBy" id="cretedBy" class="form-control form-control-sm">#}
+{#                                #}{#                                            {% for paiement in paiement %}#}
+{#                                #}{#                                                <option  value="{{ paiement.id }}">{{ paiement.cretedBy }}</option>#}
+{#                                #}{#                                            {% endfor %}#}
+{#                                #}{#                                        </select>#}
+{#                                #}{#                                    </div>#}
+{#                                #}{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="row">#}
+{#                                <div class="col-md-12">#}
+{#                                    <input type="submit" class="btn btn-primary btn-sm" value="ENREGISTRER">#}
+{#                                </div>#}
+{#                            </div>#}
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h3>Frais payés</h3>
+                                <table class="table align-items-center table-flush">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th>Date</th>
+                                        <th scope="col">Désignation</th>
+                                        <th scope="col">Montant</th>
+                                        <th scope="col">M. Payé</th>
+                                        <th scope="col">M. Resté</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% set i = 1 %}
+                                    {% for frais in ordre %}
+                                        <tr>
+                                            <td>
+                                                {{ i }}
+                                            </td>
+                                            <td>
+                                                {{ frais.createdAt|date('d/m/Y') }}
+                                            </td>
+                                            <td>
+                                                {{ frais.frais.designation|upper }}
+                                            </td>
+                                            <td>
+                                                {{ frais.frais.montant }}
+                                            </td>
+                                            <td>
+                                                {{ frais.montantPaye }}
+                                            </td>
+                                            <td>
+                                                {{ frais.montantReste }}
+                                            </td>
+                                            <td>
+                                                <a href="{{ path('facture_mono_frais', {'token': frais.token}) }}">Facturer</a>
+                                                {% if frais.montantReste > 0 %}
+                                                    <a href="{{ path('ajouter_partie', {'token': frais.token, 'inscription': eleve.token, 'new_token': csrf_token('new_token')}) }}">Ajouter</a>
+                                                {% endif %}
+
+                                            </td>
+                                        </tr>
+                                        {% set i = i + i %}
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+{#                            <div class="col">#}
+{#                                Frais non payés#}
+{#                                <table class="table align-items-center table-flush">#}
+{#                                    <thead class="thead-light">#}
+{#                                    <tr>#}
+{#                                        <th scope="col">#</th>#}
+{#                                        <th scope="col">Désignation</th>#}
+{#                                        <th scope="col">Montant</th>#}
+{#                                        <th scope="col">Actions</th>#}
+{#                                    </tr>#}
+{#                                    </thead>#}
+{#                                    <tbody>#}
+{#                                    {% set i = 1 %}#}
+{#                                    {% for frais in frais %}#}
+{#                                        <tr>#}
+{#                                            <td>#}
+{#                                                {{ i }}#}
+{#                                            </td>#}
+{#                                            <td>#}
+{#                                                {{ frais.designation|upper }}#}
+{#                                            </td>#}
+{#                                            <td>#}
+{#                                                {{ frais.montant }}#}
+{#                                            </td>#}
+{#                                            <td>#}
+{#                                                <a href="">Payer</a>#}
+{#                                            </td>#}
+{#                                        </tr>#}
+{#                                        {% set i = i+1 %}#}
+{#                                    {% endfor %}#}
+{#                                    </tbody>#}
+{#                                </table>#}
+{#                            </div>#}
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "extension/footer.html.twig" %}
+</div>
+<script>
+    $(document).ready(function(){
+        $("#montant_paye").on("keyup", function(){
+            let paye = $(this).val()
+            let montant = $("#frais").val()
+            let option = $("#frais").find("option[value="+montant+"]").text()
+
+            if(isNaN(paye))
+            {
+                console.log("NaN")
+                return false
+            }else{
+                let reste = option - paye
+                console.log(reste)
+                $("#montant_reste").val(reste)
+                $("#reste").val(reste)
+            }
+        })
+
+        $("#form-paiement").on("submit", function(e){
+            if(parseFloat($("#montant_paye").val()) > 0 ){
+                //console.log("bien")
+                //return false
+            }else if(isNaN(parseFloat($("#montant_paye").val()) )){
+                //console.log("bongo")
+                $("#message-paiement").text("Valeur entree incorrecte")
+                $("#message-paiement").addClass("text-danger")
+                $("#montant_paye").addClass("border border-danger")
+                return false
+            }
+
+        })
+
+    })
+</script>

@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-6">
+        {{ form_start(form) }}
+                {{ form_row (form.nomPere, {attr:{'class':'form-control'}}) }}
+                {{ form_row (form.Profession, {attr:{'class':'form-control'}}) }}
+                {{ form_row (form.AdresseDomicile, {attr:{'class':'form-control'}}) }}
+                {{ form_row (form.telephonePrive, {attr:{'class':'form-control'}}) }}
+                {{ form_row (form.telephoneBureau, {attr:{'class':'form-control'}}) }}
+            
+    </div>
+    <div class="col-md-6">
+        
+            {{ form_row (form.nomMere, {attr:{'class':'form-control'}}) }}
+            {{ form_row (form.professionMere, {attr:{'class':'form-control'}}) }}
+            {{ form_row (form.AdresseMere, {attr:{'class':'form-control'}}) }}<br>
+            {{ form_row (form.telephoneMerePrive, {attr:{'class':'form-control'}}) }}
+            {{ form_row (form.telephoneMereBureau, {attr:{'class':'form-control'}}) }}
+            {{ form_row (form.actif, {attr:{'class':'form-control'}}) }}
+    </div>
+      <button class="btn btn-outline-info btn-block" onclick="handleFormSubmission()">{{ button_label|default('Save') }}</button>
+       {{ form_end(form) }}
+</div>

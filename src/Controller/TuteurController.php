@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Tuteur;
-use App\Form\Tuteur1Type;
+use App\Form\TuteurType;
 use App\Repository\TuteurRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -25,13 +25,11 @@ class TuteurController extends AbstractController
     }
 
     #[Route('/new', name: 'app_tuteur_new', methods: ['GET', 'POST'])]
-//    /**
-//     * @Route("/new", name="app_tuteur_new")
-//     */
+
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $tuteur = new Tuteur();
-        $form = $this->createForm(Tuteur1Type::class, $tuteur);
+        $form = $this->createForm(TuteurType::class, $tuteur);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

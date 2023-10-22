@@ -17,7 +17,6 @@ use App\Entity\Option;
 use App\Entity\Cours;
 use App\Respository\CoursRepository;
 use App\Respository\ClasseRepository;
-use App\Respository\OptionRepository;
 use App\Form\ProfType;
 use symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType; 

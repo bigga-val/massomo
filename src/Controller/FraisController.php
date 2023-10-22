@@ -38,4 +38,38 @@ class FraisController extends AbstractController
             'liste_frais'=>$liste_frais
         ]);
     }
+
+    /**
+     * @Route("/{id}/edit", name="frais_edit", methods={"GET", "POST"})
+     */
+    public function edit(Request $request, Frais $frais): Response
+    {
+          $form =$this->createForm(FraisType::class, $frais );
+          $form->handleRequest($request);
+
+          if($form->isSubmitted() && $form->isValid()){
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('frais');
+          }
+
+          return $this->render('frais/edit.html.twig', [
+            'frais' => $frais,
+            'form' => $form->createView(),
+        ]);
+    }
+    
+    
+    /**
+     * @Route("/{id}", name="frais_delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, Frais $frais): Response 
+    {
+        if($this->isCsrfTokenValid('delete'.$frais->getId(), $request->request->get('_token'))){
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($frais);
+            $entityManager->flush();
+        }
+        return $this->redirectToRoute('frais');
+    }
+
 }

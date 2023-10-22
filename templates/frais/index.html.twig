@@ -59,13 +59,13 @@
                             <div class="table-responsive">
                                 <h3>Liste des frais disponibles</h3>
                                 <input type="text" class="form-control my-2" placeholder="Rechercher Frais...">
-                                <table class="table align-items-center table-flush">
+                                <table id="example1" class="table table-bordered table-striped">
                                     <thead class="thead-light">
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Désignation</th>
                                         <th scope="col">Montant</th>
-                                        <th scope="col">Actions</th>
+                                        <th scope="col" class="text-center">Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -82,7 +82,10 @@
                                                 {{ frais.montant }}
                                             </td>
                                             <td>
-                                                <a href="">Editer</a>
+                                              
+                                                   {# {{ include('frais/_delete_form.html.twig') }}  #}
+                                                  <a href="{{ path('frais_edit', {'id': frais.id}) }}" class="btn btn-warning btn-block">Modifier</a>
+                                                
                                             </td>
                                         </tr>
                                         {% set i = i + 1 %}
@@ -97,4 +100,22 @@
         </div>
     </div>
     {% include "extension/footer.html.twig" %}
+
+    <script>
+      $(function () {
+        $("#example1").DataTable({
+          "responsive": true, "lengthChange": false, "autoWidth": false,
+          "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+          "responsive": true,
+        });
+      });
+    </script>
 </div>

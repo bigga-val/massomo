@@ -55,9 +55,8 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table align-items-center table-flush">
+                    <table id="example1" class="table table-bordered table-striped">
                         <thead class="thead-light">
-
                                 <th scope="col">#</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Nom complet</th>
@@ -71,7 +70,7 @@
                         </thead>
 
                         <tbody id="tbody">
-                            {% set i = 0 %}
+                            {% set i = 1 %}
                             {% for paiement in paiements %}
                                 {% set i = i + 1 %}
                                 <tr>
@@ -83,7 +82,7 @@
                                     <td>{{ paiement.montant }}</td>
                                     <td>{{ paiement.montant_paye }}</td>
                                     <td>{{ paiement.montant_reste }}</td>
-                                    <td><a href="">Facturer</a></td>
+                            
                                 </tr>
 
                             {% endfor %}
@@ -93,8 +92,27 @@
             </div>
         </div>
     </div>
+ 
     {% include "extension/footer.html.twig" %}
 </div>
 {% block javascripts %}
+     <script>
+      $(function () {
+        $("#example1").DataTable({
+          "responsive": true, "lengthChange": false, "autoWidth": false,
+          "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+          "responsive": true,
+        });
+      });
+    </script>
+
     <script src="{{ asset('my_js/historique_paiement.js') }}"></script>
 {% endblock %}

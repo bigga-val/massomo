@@ -27,6 +27,21 @@ class Tuteur
      */
     private $telephone;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $profession;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $adresseTuteur;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $telephoneBureau;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +67,42 @@ class Tuteur
     public function setTelephone(?string $telephone): self
     {
         $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getProfession(): ?string
+    {
+        return $this->profession;
+    }
+
+    public function setProfession(string $profession): self
+    {
+        $this->profession = $profession;
+
+        return $this;
+    }
+
+    public function getAdresseTuteur(): ?string
+    {
+        return $this->adresseTuteur;
+    }
+
+    public function setAdresseTuteur(string $adresseTuteur): self
+    {
+        $this->adresseTuteur = $adresseTuteur;
+
+        return $this;
+    }
+
+    public function getTelephoneBureau(): ?int
+    {
+        return $this->telephoneBureau;
+    }
+
+    public function setTelephoneBureau(int $telephoneBureau): self
+    {
+        $this->telephoneBureau = $telephoneBureau;
 
         return $this;
     }

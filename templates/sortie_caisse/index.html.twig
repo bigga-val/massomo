@@ -1,0 +1,51 @@
+{% include 'extension/sidebar.html.twig' %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="col-md-12">
+    <h1>Sortie Caisse </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Montant</th>
+                <th>Raison</th>
+                <th>Cree par</th>
+                <th>Approuve par</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% set counter = 0 %}
+        {% for sortie_caisse in sortie_caisses %}
+            {% set counter = counter + 1 %}
+            <tr>
+                <td>{{ counter }}</td>
+                <td>{{ sortie_caisse.montant }}</td>
+                <td>{{ sortie_caisse.raison }}</td>
+                <td>{{ sortie_caisse.createBy ? sortie_caisse.createBy.username : '' }}</td>
+                <td>{{ sortie_caisse.approvedBy ? sortie_caisse.approvedBy.username : '' }}</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="{{ path('sortie_caisse_show', {'id': sortie_caisse.id}) }}">Details</a>
+                    {% if(sortie_caisse.approvedBy is null and is_granted("ROLE_COMPTABLE")) %}
+                        <a class="btn btn-primary btn-sm" href="{{ path('sortie_caisse_edit', {'id': sortie_caisse.id}) }}">Modifier</a>
+                    {% elseif sortie_caisse.approvedBy is not null %}
+                        <span class="text-success">Approuve</span>
+                        {% else %}
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class=" btn btn-primary btn-sm" href="{{ path('sortie_caisse_new') }}">Creer une sortie</a>
+        </div>
+    </div>
+{% endblock %}

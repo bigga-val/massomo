@@ -1,0 +1,32 @@
+{% include 'extension/sidebar.html.twig' %}
+
+{#{% block title %}New SortieCaisse{% endblock %}#}
+
+{% block body %}
+    <h1>Sortie de caissse</h1>
+<div class=" container row">
+    <div class="col-md-12">
+        <form action="" method="post">
+            <input type="hidden" name="_token" value="{{ csrf_token('paiement') }}">
+
+            <div class="form-group">
+                <label for="montant">Montant *</label>
+                <input type="number" class="form-control" required name="montant" id="montant">
+            </div>
+            <div class="form-group">
+                <label for="">Raison *</label>
+                <textarea cols="30" rows="10" class="form-control" required name="raison" id="raison"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="">Introduit par</label>
+                <input type="text" readonly class="form-control" value="{{ app.user.email }}" >
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Soumettre">
+            </div>
+        </form>
+    </div>
+</div>
+
+    {#    <a href="{{ path('sortie_caisse_index') }}">back to list</a>#}
+{% endblock %}

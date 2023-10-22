@@ -32,6 +32,11 @@ class Frais
      */
     private $is_active;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=AnneeScolaire::class)
+     */
+    private $anneeScolaire;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Frais
     public function setIsActive(?bool $is_active): self
     {
         $this->is_active = $is_active;
+
+        return $this;
+    }
+
+    public function getAnneeScolaire(): ?AnneeScolaire
+    {
+        return $this->anneeScolaire;
+    }
+
+    public function setAnneeScolaire(?AnneeScolaire $anneeScolaire): self
+    {
+        $this->anneeScolaire = $anneeScolaire;
 
         return $this;
     }

@@ -31,7 +31,7 @@
                         <tr>
 
                             <th>classes</th>
-                            <th>options</th>
+                            {# <th>options</th> #}
                             <th>titulaire</th>
 
 
@@ -42,7 +42,7 @@
                         {% for allcours in allcours %}
                             <tr>
                                 <td> {{ allcours.designation}}</td>
-                                <td> {{ allcours.options.designation }}</td>
+                                {# <td> {{ allcours.options.designation }}</td> #}
                                 <td> {{ allcours.titulaire.nomComplet }}</td>
 
                             </tr>

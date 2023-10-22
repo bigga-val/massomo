@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Parents{% endblock %}
+
+{% block body %}
+    <h1>Parents</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ parent.id }}</td>
+            </tr>
+            <tr>
+                <th>NomPere</th>
+                <td>{{ parent.nomPere }}</td>
+            </tr>
+            <tr>
+                <th>Profession</th>
+                <td>{{ parent.Profession }}</td>
+            </tr>
+            <tr>
+                <th>AdresseDomicile</th>
+                <td>{{ parent.AdresseDomicile }}</td>
+            </tr>
+            <tr>
+                <th>TelephonePrive</th>
+                <td>{{ parent.telephonePrive }}</td>
+            </tr>
+            <tr>
+                <th>TelephoneBureau</th>
+                <td>{{ parent.telephoneBureau }}</td>
+            </tr>
+            <tr>
+                <th>NomMere</th>
+                <td>{{ parent.nomMere }}</td>
+            </tr>
+            <tr>
+                <th>ProfessionMere</th>
+                <td>{{ parent.professionMere }}</td>
+            </tr>
+            <tr>
+                <th>AdresseMere</th>
+                <td>{{ parent.AdresseMere }}</td>
+            </tr>
+            <tr>
+                <th>TelephoneMerePrive</th>
+                <td>{{ parent.telephoneMerePrive }}</td>
+            </tr>
+            <tr>
+                <th>TelephoneMereBureau</th>
+                <td>{{ parent.telephoneMereBureau }}</td>
+            </tr>
+            <tr>
+                <th>Actif</th>
+                <td>{{ parent.actif ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('parents_index') }}">back to list</a>
+
+    <a href="{{ path('parents_edit', {'id': parent.id}) }}">edit</a>
+
+    {{ include('parents/_delete_form.html.twig') }}
+{% endblock %}

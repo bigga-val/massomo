@@ -33,7 +33,7 @@
                             <select name="classe" id="classe" class="form-control">
                                 <option selected="selected">Choisir une classe...</option>>
                                 {% for classe in liste_classes %}
-                                    <option value="{{ classe.id }}">{{ classe.designation~' '~classe.options.designation }}</option>
+                                    <option value="{{ classe.id }}">{{ classe.designation}}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -44,13 +44,17 @@
                                     <option value="{{ frais.id }}">{{ frais.designation }}</option>
                                 {% endfor %}
                             </select>
+                             
                         </div>
                             <input type="button" class="btn btn-primary" name="recherche" id="recherche" value="RECHERCHER">
+                            <div class="col text-right">
+                               <button href="#!" class="btn btn-sm btn-primary" onclick="HTMLtoPDF()">Generer PDF</button>
+                            </div>
                     </div>
                 </div>
                 <div class="table-responsive" id="tableau">
                     <table class="table align-items-center table-flush">
-                        <thead class="thead-light">
+                        <thead class="thead-light  id="HTMLtoPDF"">
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nom complet</th>
@@ -73,7 +77,7 @@
                                     {{ paiement.inscription.eleve.nomComplet|upper }}
                                 </td>
                                 <td>
-                                    {{ paiement.inscription.classe.designation~' '~paiement.inscription.classe.options.designation }}
+                                    {{ paiement.inscription.classe.designation~' '~paiement.inscription.idOption.designation }}
                                 </td>
                                 <td>
                                     {{ paiement.frais.designation }}
@@ -88,7 +92,7 @@
                                     {{ paiement.montantReste }}
                                 </td>
                                 <td>
-                                    <a href="">Facturer</a>
+                                      <a href="{{ path('facture_mono_frais', {'token': paiement.token}) }}">Facturer</a>
                                 </td>
                             </tr>
                             {% set i = i + 1 %}

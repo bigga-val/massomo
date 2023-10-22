@@ -41,10 +41,10 @@ class ClasseController extends AbstractController
     {
         $addClass = new Classe();
         $addCl = $this->createFormBuilder($addClass)
-                      ->add('Options', EntityType::class,[
-                        'class'=>option::class,
-                        'choice_label'=>'designation',
-                      ])
+                    //   ->add('Options', EntityType::class,[
+                    //     'class'=>option::class,
+                    //     'choice_label'=>'designation',
+                    //   ])
                       ->add('titulaire', EntityType::class,[
                         'class'=>Professeur::class,
                         'choice_label'=>'nomComplet',

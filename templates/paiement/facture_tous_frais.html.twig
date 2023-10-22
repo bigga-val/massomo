@@ -1,0 +1,134 @@
+{% include 'extension/sidebar.html.twig' %}
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Inscription</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <!-- Card stats -->
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header border-0">
+                    <div class="row align-items-center">
+                        <div class="col text-right">
+                            <button href="#!" class="btn btn-sm btn-primary" onclick="HTMLtoPDF()">Generer PDF</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive" id="HTMLtoPDF">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col text-center">
+                                <img src="{{ asset('assets/img/logoFleurons.jpeg') }}" alt="Logo" class="img-responsive h-50 w-25">
+                                 <h3>MINISTERE DE L'ENSIGNEMENT PRIMAIRE, SECONDAIRE ET HUMANITAIRE</h3>
+                                <h3>PROVINCE DU LUALABA</h3>
+                                <h3>VILLE DE KOLWEZI</h3>
+                                <h3>COMPLEXE SCOLAIRE LES FLEURONS</h3>
+                            </div>
+                            <div class="col text-center">
+                                 <img src="{{ asset('assets/img/logoFleurons.jpeg') }}" alt="Logo" class="img-responsive h-50 w-25">
+                                 <h3>MINISTERE DE L'ENSIGNEMENT PRIMAIRE, SECONDAIRE ET HUMANITAIRE</h3>
+                                <h3>PROVINCE DU LUALABA</h3>
+                                <h3>VILLE DE KOLWEZI</h3>
+                                <h3>COMPLEXE SCOLAIRE LES FLEURONS</h3>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h2 class="text-center">Facture N° ...</h2>
+                            </div>
+                            <div class="col-md-6">
+                                <h2 class="text-center">Facture N° ....</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>Eleve :</h3>
+                                <span>{{ inscription.eleve.nomComplet|upper }}, {{ inscription.classe.designation~' '~inscription.classe.options.designation }}</span>
+                            </div> <br>
+                            <div class="col-md-6">
+                                <h3>Eleve :</h3>
+                                <span>{{ inscription.eleve.nomComplet|upper }}, {{ inscription.classe.designation~' '~inscription.classe.options.designation }}</span>
+                            </div> <br>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <table class="table">
+                                    <thead>
+                                        <th>Designation</th>
+                                        <th>Montant</th>
+                                        <th>M. Payé</th>
+                                        <th>M. Resté</th>
+                                    </thead>
+                                    <tbody>
+                                    {% for paiement in paiements %}
+                                        <tr>
+                                            <td>{{ paiement.frais.designation }}</td>
+                                            <td>{{ paiement.frais.montant }}</td>
+                                            <td>{{ paiement.montantPaye }}</td>
+                                            <td>{{ paiement.montantReste }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="table">
+                                    <thead>
+                                        <th>Designation</th>
+                                        <th>Montant</th>
+                                        <th>M. Payé</th>
+                                        <th>M. Resté</th>
+                                    </thead>
+                                    <tbody>
+                                        {% for paiement in paiements %}
+                                        <tr>
+                                            <td>{{ paiement.frais.designation }}</td>
+                                            <td>{{ paiement.frais.montant }}</td>
+                                            <td>{{ paiement.montantPaye }}</td>
+                                            <td>{{ paiement.montantReste }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                SIGNATURE
+                            </div>
+                            <div class="col-md-6">
+                                SIGNATURE
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "extension/footer.html.twig" %}
+</div>
+{% block javascripts %}
+    <script src="{{ asset('my_js/paiement_frais_par_classe.js') }}"></script>
+{% endblock %}

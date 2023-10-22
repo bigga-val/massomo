@@ -27,7 +27,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="mb-0">Eleves non actifs</h3>
+                            <h3 class="mb-0">Eleves actifs</h3>
                         </div>
                         <div class="col-md-4 text-right">
                             <input type="text" class="form-control my-2" id="myInput" placeholder="Recherche...">
@@ -37,7 +37,7 @@
                 </div>
                 {#                <div class="container" id="HTMLtoPDF">#}
                 <div class="table-responsive" id="HTMLtoPDF">
-                    <table class="table align-items-center table-flush">
+                    <table id="example2" class="table table-bordered table-striped">
                         <thead class="thead-light">
                         <tr>
                             <th scope="col">#</th>
@@ -64,7 +64,20 @@
                                     {{ eleve.createdAt|date('d-m-Y') }}
                                 </td>
                                 <td>
-                                    <a href="{{ path('profil_eleve', {'id': eleve.id}) }}">Confirmer Place</a>
+                                    {% set isInscripted = false %}
+                                    {% for inscrit in inscrits %}
+                                        {% if(inscrit.eleve.id == eleve.id) %}
+                                            {% set isInscripted = true %}
+                                        {% else %}
+                                            {% set isInscripted = false %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if(isInscripted == false) %}
+                                        <a href="{{ path('profil_eleve', {'id': eleve.id}) }}">Confirmer Place</a>
+                                    {% else %}
+                                        <a href="{{ path('frais_payes', {'eleve': eleve.id}) }}">Frais Payes</a>
+
+                                    {% endif %}
                                 </td>
                             </tr>
                             {% set i = i + 1 %}
@@ -75,5 +88,25 @@
             </div>
         </div>
     </div>
+
+    
+<script>
+      $(function () {
+        $("#example1").DataTable({
+          "responsive": true, "lengthChange": false, "autoWidth": false,
+          "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+          "responsive": true,
+        });
+      });
+    </script>
+
     {% include "extension/footer.html.twig" %}
 </div>

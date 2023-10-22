@@ -1,0 +1,67 @@
+{% include 'extension/sidebar.html.twig' %}
+
+
+{% block body %}
+    <div class="container row">
+        <div class="col-md-12">
+            <h3>Sortie  Caisse</h3>
+
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Date de creation</th>
+                    <td>{{ sortie_caisse.createdAt ? sortie_caisse.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Montant</th>
+                    <td>{{ sortie_caisse.montant }}</td>
+                </tr>
+                <tr>
+                    <th>Raison</th>
+                    <td>{{ sortie_caisse.raison }}</td>
+                </tr>
+
+
+                <tr>
+                    <th>Derniere Modification</th>
+                    <td>{{ sortie_caisse.modifiedAt|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Modifie par</th>
+                    <td>{{ sortie_caisse.modifiedBy ? sortie_caisse.modifiedBy.email : '' }}</td>
+
+                </tr>
+                <tr>
+                    <th>Date Approbation</th>
+                    <td>{{ sortie_caisse.approvedAt ? sortie_caisse.approvedAt|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Approuve par</th>
+                    <td>{{ sortie_caisse.approvedBy ? sortie_caisse.approvedBy.username: '' }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <a href="{{ path('sortie_caisse') }}">Voir la liste</a>
+            {% if(sortie_caisse.approvedBy is null and is_granted("ROLE_COMPTABLE")) %}
+                <a href="{{ path('sortie_caisse_edit', {'id': sortie_caisse.id}) }}">edit</a>
+            {% endif %}
+            {% if(sortie_caisse.approvedBy is null and is_granted("ROLE_FINANCE")) %}
+
+                <form action="{{ path('approuver_sortie') }}" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token('sortie') }}">
+
+                    <input type="hidden" value="{{ sortie_caisse.id }}" id="id" name="id">
+                    <input type="submit" class="btn btn-success btn-sm" value="Approuver">
+                </form>
+                {% else %}
+                    <br>
+                <span class="text-success">Status: Approuve </span>
+            {% endif %}
+{#            <a href="{{ path('approuver_sortie', {'id': sortie_caisse.id}) }}">Approuve</a>#}
+
+{#            {{ include('sortie_caisse/_delete_form.html.twig') }}#}
+        </div>
+    </div>
+
+{% endblock %}

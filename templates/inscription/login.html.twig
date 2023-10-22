@@ -36,7 +36,7 @@
                 </div>
                 <div class="table-responsive">
 
-                    <table class="table align-items-center table-flush">
+                    <table id="example1" class="table table-bordered table-striped">
                         <thead class="thead-light">
                         <tr>
                             <th scope="col">#</th>
@@ -57,14 +57,14 @@
                                     {{ inscription.eleve.nomComplet|upper }}
                                 </td>
                                 <td>
-                                    {{ inscription.classe.designation ~' '~inscription.classe.options.designation }}
+                                    {{ inscription.classe.designation ~' '~inscription.idOption.designation }}
                                 </td>
                                 <td>
                                     {{ inscription.eleve.etat.designation }}
                                 </td>
                                 <td>
-                                    <a href="{{ path('paiement', {'inscription':inscription.token}) }}">Payer</a>
-                                    <a href="{{ path('affectation_eleve', {'id': inscription.token}) }}">Affecter</a>
+                                    {# <a href="{{ path('paiement', {'inscription':inscription.token}) }}">Payer</a> #}
+                                    {# <a href="{{ path('affectation_eleve', {'id': inscription.token}) }}">Affecter</a> #}
                                 </td>
                             </tr>
                             {% set i = i + 1 %}
@@ -75,13 +75,25 @@
             </div>
         </div>
     </div>
+    
+    <script>
+      $(function () {
+        $("#example1").DataTable({
+          "responsive": true, "lengthChange": false, "autoWidth": false,
+          "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+          "responsive": true,
+        });
+      });
+    </script>
     {% include "extension/footer.html.twig" %}
+
 </div>
 
-
-<tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-</tr>

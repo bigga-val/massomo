@@ -18,7 +18,7 @@ class ClasseType extends AbstractType
         $builder
             ->add('designation')
             ->add('is_active')
-            ->add('options',EntityType::class,array('class'=>Option::class,'choice_label'=>'id'))
+            // ->add('options',EntityType::class,array('class'=>Option::class,'choice_label'=>'id'))
             ->add('titulaire',EntityType::class,array('class'=>Professeur::class,'choice_label'=>'id'))
         ;
     }

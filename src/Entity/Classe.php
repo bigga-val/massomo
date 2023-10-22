@@ -24,10 +24,7 @@ class Classe
      */
     private $designation;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Option::class)
-     */
-    private $options;
+    
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -72,17 +69,6 @@ class Classe
         return $this;
     }
 
-    public function getOptions(): ?Option
-    {
-        return $this->options;
-    }
-
-    public function setOptions(?Option $options): self
-    {
-        $this->options = $options;
-
-        return $this;
-    }
 
     public function getIsActive(): ?bool
     {
